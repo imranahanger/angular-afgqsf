@@ -1,0 +1,78 @@
+<mat-accordion>
+<!-- #docregion basic-panel -->
+<!-- #docregion hide-toggle -->
+  <mat-expansion-panel hideToggle>
+<!-- #enddocregion hide-toggle -->
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        List of Actions
+      </mat-panel-title>
+      <mat-panel-description>
+        This is a description of Actions
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>This is the primary content of the panel.</p>
+  </mat-expansion-panel>
+<!-- #enddocregion basic-panel -->
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+      TECH TRAINING
+      </mat-panel-title>
+      <mat-panel-description>
+      This Section is used to control access to Tech Training Module of Airman Application {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+      <mat-icon matTooltip="Add Action or Suppporting TAG">add</mat-icon>
+    </mat-expansion-panel-header>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef> Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.type}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element"> <mat-icon aria-hidden="false" aria-label="Example edit icon">edit</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example edit icon">delete</mat-icon>
+      </td>
+      
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        LMS
+      </mat-panel-title>
+      <mat-panel-description>
+      Learning Management System  {{panelOpenState ? 'open' : 'closed'}}
+      </mat-panel-description>
+      <mat-icon matTooltip="Add Action or Suppporting TAG">add</mat-icon>
+
+    </mat-expansion-panel-header>
+    <p>No Tags or Supporting Actions added</p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
